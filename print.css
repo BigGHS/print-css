@@ -1,0 +1,626 @@
+/* print-consolidated.css - Complete Print Stylesheet for Obsidian PDF Export */
+/* All modules combined into single file for Obsidian print plugins */
+
+@media print {
+
+/* ===== VARIABLES ===== */
+	:root {
+		/* Typography Variables */
+		--body-font-family: Roboto;
+		--header-font-family: Montserrat, sans-serif;
+		--code-font-family: MonoLisa, Menlo, SFMono-Regular, Consolas, "Roboto Mono", monospace;
+	
+		/* Font Sizes */
+		--default-font-size: 11pt;
+		--h1-font-size: 15pt;
+		--h2-font-size: 13pt;
+		--h3-font-size: 12pt;
+		--h4-h5-font-size: var(--default-font-size);
+		--table-font-size: 10pt;
+		--code-font-size: 10pt;
+		--caption-font-size: 8pt;
+		--footnote-font-size: 10pt;
+	
+		/* Spacing Variables */
+		--padding-tiny: 3pt;
+		--padding-small: 5pt;
+		--padding-normal: 10pt;
+		--padding-large: 15pt;
+	
+		/* Layout Variables */
+		--line-spacing: 1.4;
+		--footnote-line-spacing: 1.1;
+		--list-margin: 10pt;
+		--list-item-spacing: 3pt;
+	
+		/* Color Variables */
+		--text-color: black;
+		--background-color-light: rgb(240, 240, 240);
+		--border-color-light: lightgrey;
+		--border-color-medium: grey;
+		--border-color-dark: darkgrey;
+		--code-background-color: rgb(240, 240, 240);
+		--code-text-color: #292929;
+	
+		/* Page Layout Variables */
+		--page-margin-default: 1.5cm;
+		--page-margin-top: 2.2cm;
+		--page-margin-first-top: 1.0cm;
+		--page-margin-bottom: 2cm;
+	
+		/* List Bullet Positioning */
+		--bullet-position-level1: -15pt;
+		--bullet-position-level2: -15pt;
+		--bullet-size-level1: 1.4em;
+		--bullet-size-level2: 1.1em;
+		--bullet-size-level3: 1.0em;
+	
+		/* Border Styles */
+		--table-border-width: 1px;
+		--code-border-width: 1px;
+		--highlight-border-width: 0px;
+	
+		/* Table Column Width Variables */
+		--table-col-width-narrow: 15%;
+		--table-col-width-small: 20%;
+		--table-col-width-medium: 25%;
+		--table-col-width-large: 35%;
+		--table-col-width-wide: 45%;
+		--table-col-width-auto: auto;
+		--table-col-width-min: min-content;
+		--table-col-width-max: max-content;
+	
+		/* Print-specific Variables */
+		--orphans-count: 2;
+		--widows-count: 2;
+	}
+
+/* ===== PAGE LAYOUT ===== */
+
+	/* Page Structure and Margins */
+	@page {
+		margin: var(--page-margin-top) var(--page-margin-default) var(--page-margin-bottom) var(--page-margin-default) !important;
+	}
+
+	@page :first {
+		margin: var(--page-margin-first-top) var(--page-margin-default) var(--page-margin-bottom) var(--page-margin-default) !important;
+	}
+
+	/* Page Break Controls */
+	p, li, blockquote, table, figure {
+		page-break-inside: avoid !important;
+		break-inside: avoid !important;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		page-break-after: avoid !important;
+	}
+
+	ul, ol, dl {
+		page-break-inside: avoid !important;
+		break-inside: avoid !important;
+		page-break-before: avoid !important;
+	}
+
+/* ===== TYPOGRAPHY ===== */
+
+	body {
+		tab-size: 4 !important;
+		--code-background: var(--code-background-color) !important;
+		--code-normal: var(--code-text-color) !important;
+		--color-accent: var(--text-color) !important;
+		position: relative !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	p {
+		font-family: var(--body-font-family) !important;
+		font-size: var(--default-font-size) !important;
+		color: var(--text-color) !important;
+		text-align: justify !important;
+		line-height: var(--line-spacing) !important;
+		text-indent: 0;
+		margin: 0 0 var(--padding-normal) 0 !important;
+		orphans: var(--orphans-count) !important;
+		widows: var(--widows-count) !important;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--header-font-family) !important;
+		color: var(--text-color) !important;
+		page-break-inside: avoid;
+		font-size: var(--h3-font-size) !important;
+		font-weight: medium !important;
+		text-align: left !important;
+		line-height: 1.1 !important;
+		margin-bottom: 0 !important;
+		padding-bottom: 0 !important;
+		/* margin-top: 20pt !important; */
+	}
+
+	/* Reduce spacing between consecutive headings */
+	h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+	h2 + h3, h2 + h4, h2 + h5, h2 + h6,
+	h3 + h4, h3 + h5, h3 + h6,
+	h4 + h5, h4 + h6,
+	h5 + h6 {
+		margin-top: var(--padding-normal) !important;
+	}
+
+	h1 {
+		text-align: center !important;
+		font-size: var(--h1-font-size) !important;
+		font-weight: 500 !important;
+		line-height: 1 !important;
+		margin-top: 0 !important;
+		margin-bottom: var(--padding-normal) !important;
+	}
+
+	h6 {
+		text-align: center !important;
+		font-size: var(--h3-font-size) !important;
+		font-weight: normal !important;
+		margin-bottom: var(--padding-normal) !important;
+	}
+
+	h2 {
+		text-align: center !important;
+		font-size: var(--h2-font-size) !important;
+		/* padding-bottom: var(--padding-small) !important; */
+		margin-bottom: var(--padding-normal) !important;
+	}
+
+	h3 {
+		font-size: var(--h3-font-size) !important;
+		/* padding-bottom: var(--padding-normal) !important; */
+		margin-bottom: var(--padding-normal) !important;
+	}
+
+	h4 {
+		font-size: var(--h4-h5-font-size) !important;
+		/* padding-bottom: var(--padding-small) !important; */
+		margin-bottom: var(--padding-normal) !important; 
+	}
+	
+	h5 {
+		font-size: var(--h4-h5-font-size) !important;
+		/* padding-bottom: var(--padding-small) !important; */
+		margin-top: var(--padding-small) !important;
+		margin-bottom: var(--padding-normal) !important; 
+	}
+
+	strong {
+		font-weight: medium !important;
+	}
+
+	em {
+		font-style: italic !important;
+	}
+
+	del {
+		text-decoration: none;
+	}
+
+	mark {
+		background-color: var(--background-color-light) !important;
+		color: var(--text-color) !important;
+		padding: 2pt 2pt !important;
+		border-radius: 0 !important;
+	}
+
+	a:link, a:visited, a {
+		color: var(--text-color) !important;
+		text-decoration: none !important;
+	}
+
+	code {
+		font-family: var(--code-font-family) !important;
+		font-size: var(--code-font-size) !important;
+		color: var(--code-text-color) !important;
+		border-radius: 0 !important;
+	}
+
+/* ===== LISTS  ===== */
+
+	ul, ol, dl {
+		font-family: var(--body-font-family) !important;
+		font-size: var(--default-font-size) !important;
+		line-height: var(--line-spacing) !important;
+		list-style-position: outside !important;
+		padding-left: 17pt !important;
+		padding-right: 0 !important;
+		padding-top: 0 !important;
+		padding-bottom: var(--padding-small) !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		margin-top: var(--list-margin) !important;
+		margin-bottom: var(--list-margin) !important;
+	}
+
+	ul li, ol li {
+		position: relative !important;
+		padding: 0 0 0 5pt !important;
+		margin: 0 0 var(--list-item-spacing) 0 !important;
+	}
+
+	ul li:last-child, ol li:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	ul li {
+		list-style-type: none !important;
+	}
+
+	ul li::before {
+		content: '•' !important;
+		position: absolute !important;
+		left: var(--bullet-position-level1) !important;
+		top: -0.15em !important;
+		font-size: var(--bullet-size-level1) !important;
+	}
+
+	ul ul {
+		margin-top: var(--list-item-spacing) !important;
+		margin-bottom: var(--list-item-spacing) !important;
+	}
+
+	ul ul li::before {
+		content: '▸' !important;
+		position: absolute !important;
+		left: var(--bullet-position-level2) !important;
+		top: -0.15em !important;
+		font-size: var(--bullet-size-level2) !important;
+	}
+
+	ul ul ul {
+		margin-top: var(--list-item-spacing) !important;
+		margin-bottom: var(--list-item-spacing) !important;
+	}
+
+	ul ul ul li::before {
+		content: '▪' !important;
+		position: absolute !important;
+		left: var(--bullet-position-level2) !important;
+		top: -0.15em !important;
+		font-size: var(--bullet-size-level3) !important;
+	}
+
+	ol li::marker {
+		font-family: var(--body-font-family) !important;
+		font-size: var(--default-font-size) !important;
+		color: var(--text-color) !important;
+	}
+
+	ol ol {
+		margin-top: var(--list-item-spacing) !important;
+		margin-bottom: var(--list-item-spacing) !important;
+	}
+
+	ol ol li::marker {
+		color: var(--text-color) !important;
+	}
+
+	/* Mixed list spacing fixes */
+	li ul, li ol {
+		margin-top: var(--list-item-spacing) !important;
+		margin-bottom: var(--list-item-spacing) !important;
+	}
+
+	ul ol li {
+		list-style-type: decimal !important;
+		position: static !important;
+		margin-left: 0 !important;
+		padding: 0 0 0 5pt !important;
+	}
+
+	ul ol li::before {
+		content: none !important;
+	}
+
+	ul ol li::marker {
+		font-family: var(--body-font-family) !important;
+		font-size: var(--default-font-size) !important;
+		color: var(--text-color) !important;
+	}
+
+	/* List Spacing */
+	p + ul, p + ol {
+		margin-top: var(--padding-small) !important;
+	}
+
+	ul + p, ol + p {
+		margin-top: var(--padding-small) !important;
+	}
+
+	h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, h3 + ol,
+	h4 + ul, h4 + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol {
+		margin-top: var(--padding-small) !important;
+	}
+
+	ul + ul, ol + ol, ul + ol, ol + ul {
+		margin-top: var(--padding-small) !important;
+	}
+	
+	h1 + h6 {
+		margin-top: var(--padding-small) !important;
+	}
+	
+	h6 + p {
+		margin-top: var(--padding-large) !important;
+	}
+
+/* ===== TABLES ===== */
+
+	table {
+		font-family: var(--body-font-family) !important;
+		font-size: var(--table-font-size) !important;
+		text-align: left !important;
+		/* margin: 1.5em auto 1em auto !important; */
+		border-top: var(--table-border-width) solid var(--border-color-dark) !important;
+		border-bottom: var(--table-border-width) solid var(--border-color-dark) !important;
+		max-width: 100% !important;
+
+		table-layout: auto !important;
+		word-wrap: break-word !important;
+		/* margin-bottom: var(--padding-normal) !important; */
+		page-break-inside: avoid !important;
+	}
+	/* Table header row */
+	th {
+		color: var(--text-color) !important;
+		background-color: lightgrey !important;
+		font-weight: medium !important;
+		font-size: var(--table-font-size) !important;
+		border: none !important;
+		border-bottom: var(--table-border-width) solid var(--border-color-medium) !important;
+		padding: 2pt 5pt !important;
+		word-wrap: break-word !important;
+		overflow-wrap: break-word !important;
+	}
+	/* Table data rows */
+	td {
+		font-size: var(--table-font-size) !important;
+		border: none !important;
+		padding: 2pt 5pt !important;
+		word-wrap: break-word !important;
+		overflow-wrap: break-word !important;
+		color: var(--text-color) !important;
+		vertical-align: top !important;
+	}
+	/* Spacing followinga table */
+	/* table + h1, table + h2, table + h3, table + h4, table + h5, table + h6 {
+		margin-top: calc(var(--padding-normal) + 10pt) !important;
+	} */
+	
+	table + p, table + ul, table + ol {
+		margin-top: var(--padding-normal) !important;
+	}
+
+/* ===== COMPONENTS ===== */
+
+	/* Code Blocks */
+	pre {
+		background-color: var(--code-background) !important;
+		border-top: var(--code-border-width) dashed var(--border-color-dark) !important;
+		border-bottom: var(--code-border-width) dashed var(--border-color-dark) !important;
+		border-left: none !important;
+		border-right: none !important;
+		border-radius: 0 !important;
+		border-width: var(--code-border-width) 0 !important;
+		border-color: var(--border-color-medium) !important;
+		line-height: 1 !important;
+		margin: var(--list-margin) 0 !important;
+		margin-bottom: var(--padding-large) !important;
+		padding: var(--padding-normal) !important;
+		page-break-inside: avoid !important;
+		overflow: hidden !important;
+		word-wrap: break-word !important;
+	}
+
+	pre + h1, pre + h2, pre + h3, pre + h4, pre + h5, pre + h6 {
+		margin-top: calc(var(--padding-large) + 10pt) !important;
+	}
+
+	pre + p, pre + ul, pre + ol {
+		margin-top: var(--padding-large) !important;
+	}
+
+	/* Blockquotes */
+	blockquote {
+		border-left: 3px solid var(--border-color-medium) !important;
+		margin: 1.3em 0 !important;
+		padding: 1em !important;
+		font-size: var(--table-font-size) !important;
+		background-color: var(--background-color-light) !important;
+		page-break-inside: avoid !important;
+		break-inside: avoid !important;
+		font-style: italic !important;
+	}
+
+	blockquote p {
+		display: inline !important;
+		text-align: left !important;
+		font-style: italic !important;
+		margin: 0 !important;
+		line-height: var(--line-spacing) !important;
+	}
+
+	/* Callouts */
+	.callout {
+		--callout-color: var(--text-color);
+		background-color: var(--background-color-light) !important;
+		page-break-inside: avoid !important;
+		break-inside: avoid !important;
+		margin: var(--list-margin) 0 !important;
+		padding: var(--padding-normal) !important;
+		border-radius: 0 !important;
+	}
+
+	.callout .callout-content {
+		background-color: var(--background-color-light) !important;
+		color: var(--text-color) !important;
+		font-family: var(--body-font-family) !important;
+		font-size: var(--default-font-size) !important;
+		line-height: var(--line-spacing) !important;
+	}
+
+	.callout .callout-title {
+		background-color: var(--background-color-light) !important;
+		color: var(--text-color) !important;
+		font-weight: 600 !important;
+		margin-bottom: var(--padding-small) !important;
+		font-family: var(--header-font-family) !important;
+		font-size: var(--default-font-size) !important;
+	}
+
+	.callout .callout-icon, .callout .callout-icon svg {
+		color: black !important;
+	}
+
+	/* Simple highlighted paragraph class */
+	/* Insert <p class="highlighted-para">Paragraph text...</p> */
+	/* Insert <div class="highlighted-para"><p>Paragraph 1 text...</p><p>Paragraph 2 text...</p></div> for multiple paragraphs */
+	.highlighted-para {
+		font-family: var(--body-font-family) !important;
+		font-size: var(--default-font-size) !important;
+		background-color: var(--background-color-light) !important;
+		padding: var(--padding-normal) !important;
+		margin-top: var(--padding-normal) !important;
+		margin-bottom: var(--padding-normal) !important;
+		page-break-inside: avoid !important;
+	}
+	
+	/* Simple centered paragraph class */
+	/* Insert <p class="centered-para">Paragraph text...</p> */
+	/* Insert <div class="centered-para"><p>Paragraph 1 text...</p><p>Paragraph 2 text...</p></div> for multiple paragraphs */
+	.centered-para {
+		font-family: var(--body-font-family) !important;
+		font-size: var(--default-font-size) !important;
+		text-align: center !important;
+		background-color: transparent !important;
+		padding: var(--padding-normal) !important;
+		margin-top: var(--padding-normal) !important;
+		margin-bottom: var(--padding-normal) !important;
+		page-break-inside: avoid !important;
+	}
+	
+	/* Prevent horizontal line before footnotes section */
+	.footnotes hr {
+		display: none;
+	}
+
+	.footnotes {
+		/* margin-top: var(--padding-large) !important;
+		padding-top: var(--padding-normal) !important;
+		border-top: 1px solid var(--border-color-light) !important;*/
+		font-size: var(--footnote-font-size) !important;
+		line-height: var(--footnote-line-spacing) !important;
+		margin-bottom: 0pt !important;    /* Space between footnotes */
+		padding-bottom: var(--padding-tiny) !important;
+	}
+	/* For multi-paragraph footnotes */
+	.footnotes p {
+		line-height: var(--footnote-line-spacing) !important;
+		font-size: var(--footnote-font-size) !important;
+		margin-bottom: 0pt !important;    /* Space between footnotes */
+		padding-bottom: var(--padding-tiny) !important;
+	}
+	
+	.footnotes ol {
+		line-height: var(--footnote-line-spacing) !important;  /* Consistent with section */
+		font-size: var(--footnote-font-size) !important;
+	}
+	.footnotes ol > li {
+		line-height: var(--footnote-line-spacing) !important;      /* Line spacing within each footnote */
+		font-size: var(--footnote-font-size) !important;
+		margin-bottom: 0pt !important;    /* Space between footnotes */
+		padding-bottom: var(--padding-tiny) !important;   /* Extra space after each footnote */
+	}	
+	/* Set color of footnote numbering */
+	.footnotes ol > li::marker {
+		color: var(--text-color);
+		font-weight: normal;
+		font-size: var(--footnote-font-size) !important;
+	}
+	/* Hide the original text content that includes brackets */
+	a.footnote-link {
+		text-indent: -9999px !important;
+		display: inline-block !important;
+		width: auto !important;
+		height: auto !important;
+		text-decoration: none !important;
+		position: relative !important;
+		overflow: visible !important;
+		min-width: 0.7em !important;
+	}
+	/* Show only the number without brackets */
+	a.footnote-link::after {
+		content: attr(data-footref) !important;
+		text-indent: 0 !important;
+		position: absolute !important;
+		left: 0 !important;
+		top: 0.3em !important;
+		font-size: 0.9em !important;
+		vertical-align: super !important;
+		color: inherit !important;
+		text-decoration: inherit !important;
+		white-space: nowrap !important;
+		width: auto !important;
+	}
+	/* Make footnote backlink arrows visible */
+	a.footnote-backref.footnote-link {
+		text-indent: 0 !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		color: rgba(0, 0, 0, 0.5) !important;
+		text-decoration: underline !important;
+		font-size: 0.9em !important;
+		margin-left: 0.3em !important;
+		position: static !important;
+		display: inline !important;
+		width: auto !important;
+		min-width: auto !important;
+	}
+
+	a.footnote-backref.footnote-link::after {
+		content: none !important;
+	}
+
+	/* Manual page breaks */
+	hr {
+		border: none !important;
+		border-top: 0 solid lightgray !important;
+		page-break-after: always !important;
+		margin: var(--padding-normal) 0 !important;
+	}
+
+	/* Math and diagrams */
+	mjx-math {
+		font-size: 90% !important;
+	}
+
+	math-block {
+		page-break-before: avoid !important;
+	}
+
+	.mermaid {
+		color: var(--text-color) !important;
+	}
+
+	/* Figures */
+	svg, img {
+		display: block !important;
+		page-break-inside: avoid !important;
+		page-break-after: avoid !important;
+		margin: 0 auto 0 !important;
+	}
+
+	figcaption {
+		font-family: "Latin Modern Roman" !important;
+		text-align: center !important;
+		margin-bottom: 16pt !important;
+		font-size: var(--caption-font-size) !important;
+	}
+
+}
