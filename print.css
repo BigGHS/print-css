@@ -1,3 +1,4 @@
+/* FOR PRINT MEDIA */
 /* print-consolidated.css - Complete Print Stylesheet for Obsidian PDF Export */
 /* All modules combined into single file for Obsidian print plugins */
 
@@ -21,6 +22,8 @@
 		--caption-font-size: 8pt;
 		--footnote-font-size: 10pt;
 	
+		/* [Margin] | Border | [Padding] Content [Padding] | Border | [Margin] */
+	
 		/* Spacing Variables */
 		--padding-tiny: 3pt;
 		--padding-small: 5pt;
@@ -30,8 +33,8 @@
 		/* Layout Variables */
 		--line-spacing: 1.4;
 		--footnote-line-spacing: 1.1;
-		--list-margin: 10pt;
-		--list-item-spacing: 3pt;
+		--list-margin: 0pt;
+		--list-item-margin: 3pt;
 	
 		/* Color Variables */
 		--text-color: black;
@@ -44,7 +47,7 @@
 	
 		/* Page Layout Variables */
 		--page-margin-default: 1.5cm;
-		--page-margin-top: 2.2cm;
+		--page-margin-top: 2.5cm;
 		--page-margin-first-top: 1.0cm;
 		--page-margin-bottom: 2cm;
 	
@@ -90,6 +93,11 @@
 	p, li, blockquote, table, figure {
 		page-break-inside: avoid !important;
 		break-inside: avoid !important;
+	}
+	
+	/* Increase margin-top for paragraphs that appear at the top of pages */
+	p:first-child {
+		margin-top: var(--padding-normal) !important;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -241,11 +249,42 @@
 	ul li, ol li {
 		position: relative !important;
 		padding: 0 0 0 5pt !important;
-		margin: 0 0 var(--list-item-spacing) 0 !important;
+		margin: 0 0 var(--list-item-margin) 0 !important;
+		line-height: var(--line-spacing) !important;
 	}
 
 	ul li:last-child, ol li:last-child {
 		margin-bottom: 0 !important;
+	}
+
+	/* Force consistent spacing for all list items regardless of context */
+	ul li, ol li,
+	.callout ul li, .callout ol li,
+	blockquote ul li, blockquote ol li,
+	div ul li, div ol li,
+	p + ul li, p + ol li {
+		margin-bottom: var(--list-item-margin) !important;
+		padding-bottom: 0 !important;
+	}
+
+	/* Handle paragraphs inside list items (caused by empty lines in markdown) */
+	li p {
+		margin: 0 !important;
+		padding: 0 !important;
+		line-height: var(--line-spacing) !important;
+		text-align: justify !important;
+	}
+
+	/* Ensure first and last paragraphs in list items have no extra margin */
+	li p:first-child,
+	li p:last-child {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	/* Handle multiple paragraphs in a single list item */
+	li p + p {
+		margin-top: var(--padding-tiny) !important;
 	}
 
 	ul li {
@@ -261,8 +300,12 @@
 	}
 
 	ul ul {
-		margin-top: var(--list-item-spacing) !important;
-		margin-bottom: var(--list-item-spacing) !important;
+		margin-top: var(--list-item-margin) !important;
+		margin-bottom: var(--list-item-margin) !important;
+	}
+
+	ul ul li {
+		margin-bottom: var(--list-item-margin) !important;
 	}
 
 	ul ul li::before {
@@ -274,8 +317,12 @@
 	}
 
 	ul ul ul {
-		margin-top: var(--list-item-spacing) !important;
-		margin-bottom: var(--list-item-spacing) !important;
+		margin-top: var(--list-item-margin) !important;
+		margin-bottom: var(--list-item-margin) !important;
+	}
+
+	ul ul ul li {
+		margin-bottom: var(--list-item-margin) !important;
 	}
 
 	ul ul ul li::before {
@@ -293,8 +340,8 @@
 	}
 
 	ol ol {
-		margin-top: var(--list-item-spacing) !important;
-		margin-bottom: var(--list-item-spacing) !important;
+		margin-top: var(--list-item-margin) !important;
+		margin-bottom: var(--list-item-margin) !important;
 	}
 
 	ol ol li::marker {
@@ -303,8 +350,12 @@
 
 	/* Mixed list spacing fixes */
 	li ul, li ol {
-		margin-top: var(--list-item-spacing) !important;
-		margin-bottom: var(--list-item-spacing) !important;
+		margin-top: var(--list-item-margin) !important;
+		margin-bottom: var(--list-item-margin) !important;
+	}
+
+	li ul li, li ol li {
+		margin-bottom: var(--list-item-margin) !important;
 	}
 
 	ul ol li {
@@ -312,6 +363,7 @@
 		position: static !important;
 		margin-left: 0 !important;
 		padding: 0 0 0 5pt !important;
+		margin-bottom: var(--list-item-margin) !important;
 	}
 
 	ul ol li::before {
@@ -324,26 +376,20 @@
 		color: var(--text-color) !important;
 	}
 
-	/* List Spacing */
-	p + ul, p + ol {
-		margin-top: var(--padding-small) !important;
-	}
-
-	ul + p, ol + p {
-		margin-top: var(--padding-small) !important;
-	}
-
+	/* List Spacing - consistent spacing for all contexts */
 	h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, h3 + ol,
-	h4 + ul, h4 + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol {
-		margin-top: var(--padding-small) !important;
+	h4 + ul, h4 + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol,
+	p + ul, p + ol {
+		margin-top: var(--padding-tiny) !important;
 	}
 
-	ul + ul, ol + ol, ul + ol, ol + ul {
-		margin-top: var(--padding-small) !important;
+	ul + ul, ol + ol, ul + ol, ol + ul,
+	ul + p, ol + p {
+		margin-top: var(--padding-tiny) !important;
 	}
 	
 	h1 + h6 {
-		margin-top: var(--padding-small) !important;
+		margin-top: var(--padding-tiny) !important;
 	}
 	
 	h6 + p {
