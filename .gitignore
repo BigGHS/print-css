@@ -1,0 +1,6 @@
+# Exclude macOS Finder (System Explorer) View States
+.DS_Store
+
+# Exclude text files
+*.txt
+

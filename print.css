@@ -4,7 +4,7 @@
 
 @media print {
 
-/* ===== VARIABLES ===== */
+	/* ===== VARIABLES ===== */
 	:root {
 		/* Typography Variables */
 		--body-font-family: Roboto;
@@ -29,6 +29,7 @@
 		--padding-small: 5pt;
 		--padding-normal: 10pt;
 		--padding-large: 15pt;
+		--padding-vlarge: 20pt;
 	
 		/* Layout Variables */
 		--line-spacing: 1.4;
@@ -48,7 +49,7 @@
 		/* Page Layout Variables */
 		--page-margin-default: 1.5cm;
 		--page-margin-top: 2.5cm;
-		--page-margin-first-top: 1.0cm;
+		--page-margin-first-top: 0.5cm;
 		--page-margin-bottom: 2cm;
 	
 		/* List Bullet Positioning */
@@ -78,7 +79,7 @@
 		--widows-count: 2;
 	}
 
-/* ===== PAGE LAYOUT ===== */
+	/* ===== PAGE LAYOUT ===== */
 
 	/* Page Structure and Margins */
 	@page {
@@ -106,11 +107,11 @@
 
 	ul, ol, dl {
 		page-break-inside: avoid !important;
-		break-inside: avoid !important;
+		/* break-inside: avoid !important; */
 		page-break-before: avoid !important;
 	}
 
-/* ===== TYPOGRAPHY ===== */
+	/* ===== TYPOGRAPHY ===== */
 
 	body {
 		tab-size: 4 !important;
@@ -156,6 +157,10 @@
 		margin-top: var(--padding-normal) !important;
 	}
 
+	body p + h3 {
+		margin-top: 50pt !important; /* 15pt instead of 10pt */
+	}
+	
 	h1 {
 		text-align: center !important;
 		font-size: var(--h1-font-size) !important;
@@ -182,20 +187,31 @@
 	h3 {
 		font-size: var(--h3-font-size) !important;
 		/* padding-bottom: var(--padding-normal) !important; */
+		margin-top: var(--padding-vlarge) !important;
+		padding-top: 0pt !important;
 		margin-bottom: var(--padding-normal) !important;
+	}
+	    
+	* + h3 {
+		margin-top: var(--padding-vlarge) !important;
+	}
+    
+	p + h3 {
+		margin-top: var(--padding-vlarge) !important;
+		padding-top: 0pt !important;
 	}
 
 	h4 {
 		font-size: var(--h4-h5-font-size) !important;
 		/* padding-bottom: var(--padding-small) !important; */
-		margin-bottom: var(--padding-normal) !important; 
+		margin-bottom: var(--padding-normal) !important;
 	}
 	
 	h5 {
 		font-size: var(--h4-h5-font-size) !important;
 		/* padding-bottom: var(--padding-small) !important; */
 		margin-top: var(--padding-small) !important;
-		margin-bottom: var(--padding-normal) !important; 
+		margin-bottom: var(--padding-normal) !important;
 	}
 
 	strong {
@@ -229,7 +245,7 @@
 		border-radius: 0 !important;
 	}
 
-/* ===== LISTS  ===== */
+	/* ===== LISTS  ===== */
 
 	ul, ol, dl {
 		font-family: var(--body-font-family) !important;
@@ -396,7 +412,7 @@
 		margin-top: var(--padding-large) !important;
 	}
 
-/* ===== TABLES ===== */
+	/* ===== TABLES ===== */
 
 	table {
 		font-family: var(--body-font-family) !important;
@@ -406,7 +422,6 @@
 		border-top: var(--table-border-width) solid var(--border-color-dark) !important;
 		border-bottom: var(--table-border-width) solid var(--border-color-dark) !important;
 		max-width: 100% !important;
-
 		table-layout: auto !important;
 		word-wrap: break-word !important;
 		/* margin-bottom: var(--padding-normal) !important; */
@@ -437,236 +452,237 @@
 	/* Spacing followinga table */
 	/* table + h1, table + h2, table + h3, table + h4, table + h5, table + h6 {
 		margin-top: calc(var(--padding-normal) + 10pt) !important;
-	} */
+		}
+		*/
 	
-	table + p, table + ul, table + ol {
-		margin-top: var(--padding-normal) !important;
-	}
+		table + p, table + ul, table + ol {
+			margin-top: var(--padding-normal) !important;
+		}
 
-/* ===== COMPONENTS ===== */
+		/* ===== COMPONENTS ===== */
 
-	/* Code Blocks */
-	pre {
-		background-color: var(--code-background) !important;
-		border-top: var(--code-border-width) dashed var(--border-color-dark) !important;
-		border-bottom: var(--code-border-width) dashed var(--border-color-dark) !important;
-		border-left: none !important;
-		border-right: none !important;
-		border-radius: 0 !important;
-		border-width: var(--code-border-width) 0 !important;
-		border-color: var(--border-color-medium) !important;
-		line-height: 1 !important;
-		margin: var(--list-margin) 0 !important;
-		margin-bottom: var(--padding-large) !important;
-		padding: var(--padding-normal) !important;
-		page-break-inside: avoid !important;
-		overflow: hidden !important;
-		word-wrap: break-word !important;
-	}
+		/* Code Blocks */
+		pre {
+			background-color: var(--code-background) !important;
+			border-top: var(--code-border-width) dashed var(--border-color-dark) !important;
+			border-bottom: var(--code-border-width) dashed var(--border-color-dark) !important;
+			border-left: none !important;
+			border-right: none !important;
+			border-radius: 0 !important;
+			border-width: var(--code-border-width) 0 !important;
+			border-color: var(--border-color-medium) !important;
+			line-height: 1 !important;
+			margin: var(--list-margin) 0 !important;
+			margin-bottom: var(--padding-large) !important;
+			padding: var(--padding-normal) !important;
+			page-break-inside: avoid !important;
+			overflow: hidden !important;
+			word-wrap: break-word !important;
+		}
 
-	pre + h1, pre + h2, pre + h3, pre + h4, pre + h5, pre + h6 {
-		margin-top: calc(var(--padding-large) + 10pt) !important;
-	}
+		pre + h1, pre + h2, pre + h3, pre + h4, pre + h5, pre + h6 {
+			margin-top: calc(var(--padding-large) + 10pt) !important;
+		}
 
-	pre + p, pre + ul, pre + ol {
-		margin-top: var(--padding-large) !important;
-	}
+		pre + p, pre + ul, pre + ol {
+			margin-top: var(--padding-large) !important;
+		}
 
-	/* Blockquotes */
-	blockquote {
-		border-left: 3px solid var(--border-color-medium) !important;
-		margin: 1.3em 0 !important;
-		padding: 1em !important;
-		font-size: var(--table-font-size) !important;
-		background-color: var(--background-color-light) !important;
-		page-break-inside: avoid !important;
-		break-inside: avoid !important;
-		font-style: italic !important;
-	}
+		/* Blockquotes */	
+		blockquote {
+			border-left: 3px solid var(--border-color-medium) !important;
+			margin: 1.3em 0 1.3em 20pt !important; /* Added left margin to match list padding */
+			padding: 1em !important;
+			font-size: var(--table-font-size) !important;
+			background-color: var(--background-color-light) !important;
+			page-break-inside: avoid !important;
+			break-inside: avoid !important;
+			font-style: italic !important;
+		}
 
-	blockquote p {
-		display: inline !important;
-		text-align: left !important;
-		font-style: italic !important;
-		margin: 0 !important;
-		line-height: var(--line-spacing) !important;
-	}
+		blockquote p {
+			display: inline !important;
+			text-align: left !important;
+			font-style: italic !important;
+			margin: 0 !important;
+			line-height: var(--line-spacing) !important;
+		}
 
-	/* Callouts */
-	.callout {
-		--callout-color: var(--text-color);
-		background-color: var(--background-color-light) !important;
-		page-break-inside: avoid !important;
-		break-inside: avoid !important;
-		margin: var(--list-margin) 0 !important;
-		padding: var(--padding-normal) !important;
-		border-radius: 0 !important;
-	}
+		/* Callouts */
+		.callout {
+			--callout-color: var(--text-color);
+			background-color: var(--background-color-light) !important;
+			page-break-inside: avoid !important;
+			break-inside: avoid !important;
+			margin: var(--list-margin) 0 !important;
+			padding: var(--padding-normal) !important;
+			border-radius: 0 !important;
+		}
 
-	.callout .callout-content {
-		background-color: var(--background-color-light) !important;
-		color: var(--text-color) !important;
-		font-family: var(--body-font-family) !important;
-		font-size: var(--default-font-size) !important;
-		line-height: var(--line-spacing) !important;
-	}
+		.callout .callout-content {
+			background-color: var(--background-color-light) !important;
+			color: var(--text-color) !important;
+			font-family: var(--body-font-family) !important;
+			font-size: var(--default-font-size) !important;
+			line-height: var(--line-spacing) !important;
+		}
 
-	.callout .callout-title {
-		background-color: var(--background-color-light) !important;
-		color: var(--text-color) !important;
-		font-weight: 600 !important;
-		margin-bottom: var(--padding-small) !important;
-		font-family: var(--header-font-family) !important;
-		font-size: var(--default-font-size) !important;
-	}
+		.callout .callout-title {
+			background-color: var(--background-color-light) !important;
+			color: var(--text-color) !important;
+			font-weight: 600 !important;
+			margin-bottom: var(--padding-small) !important;
+			font-family: var(--header-font-family) !important;
+			font-size: var(--default-font-size) !important;
+		}
 
-	.callout .callout-icon, .callout .callout-icon svg {
-		color: black !important;
-	}
+		.callout .callout-icon, .callout .callout-icon svg {
+			color: black !important;
+		}
 
-	/* Simple highlighted paragraph class */
-	/* Insert <p class="highlighted-para">Paragraph text...</p> */
-	/* Insert <div class="highlighted-para"><p>Paragraph 1 text...</p><p>Paragraph 2 text...</p></div> for multiple paragraphs */
-	.highlighted-para {
-		font-family: var(--body-font-family) !important;
-		font-size: var(--default-font-size) !important;
-		background-color: var(--background-color-light) !important;
-		padding: var(--padding-normal) !important;
-		margin-top: var(--padding-normal) !important;
-		margin-bottom: var(--padding-normal) !important;
-		page-break-inside: avoid !important;
-	}
+		/* Simple highlighted paragraph class */
+		/* Insert <p class="highlighted-para">Paragraph text...</p> */
+		/* Insert <div class="highlighted-para"><p>Paragraph 1 text...</p><p>Paragraph 2 text...</p></div> for multiple paragraphs */
+		.highlighted-para {
+			font-family: var(--body-font-family) !important;
+			font-size: var(--default-font-size) !important;
+			background-color: var(--background-color-light) !important;
+			padding: var(--padding-normal) !important;
+			margin-top: var(--padding-normal) !important;
+			margin-bottom: var(--padding-normal) !important;
+			page-break-inside: avoid !important;
+		}
 	
-	/* Simple centered paragraph class */
-	/* Insert <p class="centered-para">Paragraph text...</p> */
-	/* Insert <div class="centered-para"><p>Paragraph 1 text...</p><p>Paragraph 2 text...</p></div> for multiple paragraphs */
-	.centered-para {
-		font-family: var(--body-font-family) !important;
-		font-size: var(--default-font-size) !important;
-		text-align: center !important;
-		background-color: transparent !important;
-		padding: var(--padding-normal) !important;
-		margin-top: var(--padding-normal) !important;
-		margin-bottom: var(--padding-normal) !important;
-		page-break-inside: avoid !important;
-	}
+		/* Simple centered paragraph class */
+		/* Insert <p class="centered-para">Paragraph text...</p> */
+		/* Insert <div class="centered-para"><p>Paragraph 1 text...</p><p>Paragraph 2 text...</p></div> for multiple paragraphs */
+		.centered-para {
+			font-family: var(--body-font-family) !important;
+			font-size: var(--default-font-size) !important;
+			text-align: center !important;
+			background-color: transparent !important;
+			padding: var(--padding-normal) !important;
+			margin-top: var(--padding-normal) !important;
+			margin-bottom: var(--padding-normal) !important;
+			page-break-inside: avoid !important;
+		}
 	
-	/* Prevent horizontal line before footnotes section */
-	.footnotes hr {
-		display: none;
-	}
+		/* Prevent horizontal line before footnotes section */
+		.footnotes hr {
+			display: none;
+		}
 
-	.footnotes {
-		/* margin-top: var(--padding-large) !important;
-		padding-top: var(--padding-normal) !important;
-		border-top: 1px solid var(--border-color-light) !important;*/
-		font-size: var(--footnote-font-size) !important;
-		line-height: var(--footnote-line-spacing) !important;
-		margin-bottom: 0pt !important;    /* Space between footnotes */
-		padding-bottom: var(--padding-tiny) !important;
-	}
-	/* For multi-paragraph footnotes */
-	.footnotes p {
-		line-height: var(--footnote-line-spacing) !important;
-		font-size: var(--footnote-font-size) !important;
-		margin-bottom: 0pt !important;    /* Space between footnotes */
-		padding-bottom: var(--padding-tiny) !important;
-	}
+		.footnotes {
+			/* margin-top: var(--padding-large) !important;
+			padding-top: var(--padding-normal) !important;
+			border-top: 1px solid var(--border-color-light) !important;*/
+			font-size: var(--footnote-font-size) !important;
+			line-height: var(--footnote-line-spacing) !important;
+			margin-bottom: 0pt !important;    /* Space between footnotes */
+			padding-bottom: var(--padding-tiny) !important;
+		}
+		/* For multi-paragraph footnotes */
+		.footnotes p {
+			line-height: var(--footnote-line-spacing) !important;
+			font-size: var(--footnote-font-size) !important;
+			margin-bottom: 0pt !important;    /* Space between footnotes */
+			padding-bottom: var(--padding-tiny) !important;
+		}
 	
-	.footnotes ol {
-		line-height: var(--footnote-line-spacing) !important;  /* Consistent with section */
-		font-size: var(--footnote-font-size) !important;
-	}
-	.footnotes ol > li {
-		line-height: var(--footnote-line-spacing) !important;      /* Line spacing within each footnote */
-		font-size: var(--footnote-font-size) !important;
-		margin-bottom: 0pt !important;    /* Space between footnotes */
-		padding-bottom: var(--padding-tiny) !important;   /* Extra space after each footnote */
-	}	
-	/* Set color of footnote numbering */
-	.footnotes ol > li::marker {
-		color: var(--text-color);
-		font-weight: normal;
-		font-size: var(--footnote-font-size) !important;
-	}
-	/* Hide the original text content that includes brackets */
-	a.footnote-link {
-		text-indent: -9999px !important;
-		display: inline-block !important;
-		width: auto !important;
-		height: auto !important;
-		text-decoration: none !important;
-		position: relative !important;
-		overflow: visible !important;
-		min-width: 0.7em !important;
-	}
-	/* Show only the number without brackets */
-	a.footnote-link::after {
-		content: attr(data-footref) !important;
-		text-indent: 0 !important;
-		position: absolute !important;
-		left: 0 !important;
-		top: 0.3em !important;
-		font-size: 0.9em !important;
-		vertical-align: super !important;
-		color: inherit !important;
-		text-decoration: inherit !important;
-		white-space: nowrap !important;
-		width: auto !important;
-	}
-	/* Make footnote backlink arrows visible */
-	a.footnote-backref.footnote-link {
-		text-indent: 0 !important;
-		visibility: visible !important;
-		opacity: 1 !important;
-		color: rgba(0, 0, 0, 0.5) !important;
-		text-decoration: underline !important;
-		font-size: 0.9em !important;
-		margin-left: 0.3em !important;
-		position: static !important;
-		display: inline !important;
-		width: auto !important;
-		min-width: auto !important;
-	}
+		.footnotes ol {
+			line-height: var(--footnote-line-spacing) !important;  /* Consistent with section */
+			font-size: var(--footnote-font-size) !important;
+		}
+		.footnotes ol > li {
+			line-height: var(--footnote-line-spacing) !important;      /* Line spacing within each footnote */
+			font-size: var(--footnote-font-size) !important;
+			margin-bottom: 0pt !important;    /* Space between footnotes */
+			padding-bottom: var(--padding-tiny) !important;   /* Extra space after each footnote */
+		}
+		/* Set color of footnote numbering */
+		.footnotes ol > li::marker {
+			color: var(--text-color);
+			font-weight: normal;
+			font-size: var(--footnote-font-size) !important;
+		}
+		/* Hide the original text content that includes brackets */
+		a.footnote-link {
+			text-indent: -9999px !important;
+			display: inline-block !important;
+			width: auto !important;
+			height: auto !important;
+			text-decoration: none !important;
+			position: relative !important;
+			overflow: visible !important;
+			min-width: 0.7em !important;
+		}
+		/* Show only the number without brackets */
+		a.footnote-link::after {
+			content: attr(data-footref) !important;
+			text-indent: 0 !important;
+			position: absolute !important;
+			left: 0 !important;
+			top: 0.3em !important;
+			font-size: 0.9em !important;
+			vertical-align: super !important;
+			color: inherit !important;
+			text-decoration: inherit !important;
+			white-space: nowrap !important;
+			width: auto !important;
+		}
+		/* Make footnote backlink arrows visible */
+		a.footnote-backref.footnote-link {
+			text-indent: 0 !important;
+			visibility: visible !important;
+			opacity: 1 !important;
+			color: rgba(0, 0, 0, 0.5) !important;
+			text-decoration: underline !important;
+			font-size: 0.9em !important;
+			margin-left: 0.3em !important;
+			position: static !important;
+			display: inline !important;
+			width: auto !important;
+			min-width: auto !important;
+		}
 
-	a.footnote-backref.footnote-link::after {
-		content: none !important;
-	}
+		a.footnote-backref.footnote-link::after {
+			content: none !important;
+		}
 
-	/* Manual page breaks */
-	hr {
-		border: none !important;
-		border-top: 0 solid lightgray !important;
-		page-break-after: always !important;
-		margin: var(--padding-normal) 0 !important;
-	}
+		/* Manual page breaks */
+		hr {
+			border: none !important;
+			border-top: 0 solid lightgray !important;
+			page-break-after: always !important;
+			margin: var(--padding-normal) 0 !important;
+		}
 
-	/* Math and diagrams */
-	mjx-math {
-		font-size: 90% !important;
-	}
+		/* Math and diagrams */
+		mjx-math {
+			font-size: 90% !important;
+		}
 
-	math-block {
-		page-break-before: avoid !important;
-	}
+		math-block {
+			page-break-before: avoid !important;
+		}
 
-	.mermaid {
-		color: var(--text-color) !important;
-	}
+		.mermaid {
+			color: var(--text-color) !important;
+		}
 
-	/* Figures */
-	svg, img {
-		display: block !important;
-		page-break-inside: avoid !important;
-		page-break-after: avoid !important;
-		margin: 0 auto 0 !important;
-	}
+		/* Figures */
+		svg, img {
+			display: block !important;
+			page-break-inside: avoid !important;
+			page-break-after: avoid !important;
+			margin: 0 auto 0 !important;
+		}
 
-	figcaption {
-		font-family: "Latin Modern Roman" !important;
-		text-align: center !important;
-		margin-bottom: 16pt !important;
-		font-size: var(--caption-font-size) !important;
-	}
+		figcaption {
+			font-family: "Latin Modern Roman" !important;
+			text-align: center !important;
+			margin-bottom: 16pt !important;
+			font-size: var(--caption-font-size) !important;
+		}
 
-}
+	}
