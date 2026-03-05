@@ -592,6 +592,8 @@
 		.footnotes ol {
 			line-height: var(--footnote-line-spacing) !important;  /* Consistent with section */
 			font-size: var(--footnote-font-size) !important;
+			page-break-inside: auto !important;  /* ADD THIS */
+			break-inside: auto !important;       /* ADD THIS */
 		}
 		.footnotes ol > li {
 			line-height: var(--footnote-line-spacing) !important;      /* Line spacing within each footnote */
