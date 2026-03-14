@@ -1,0 +1,33 @@
+/* _page.css — Page margins and page-break controls (standard, no running header) */
+
+/* ===== PAGE LAYOUT ===== */
+
+@page {
+	margin: var(--page-margin-top) var(--page-margin-default) var(--page-margin-bottom) var(--page-margin-default) !important;
+}
+
+@page :first {
+	margin: var(--page-margin-first-top) var(--page-margin-default) var(--page-margin-bottom) var(--page-margin-default) !important;
+}
+
+/* ===== PAGE BREAK CONTROLS ===== */
+
+p, li, blockquote, table, figure {
+	page-break-inside: avoid !important;
+	break-inside: avoid !important;
+}
+
+/* Increase margin-top for paragraphs that appear at the top of pages */
+p:first-child {
+	margin-top: var(--padding-normal) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	page-break-after: avoid !important;
+}
+
+ul, ol, dl {
+	page-break-inside: avoid !important;
+	/* break-inside: avoid !important; */
+	page-break-before: avoid !important;
+}

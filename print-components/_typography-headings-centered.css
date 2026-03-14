@@ -1,0 +1,6 @@
+/* _typography-headings-centered.css — Center-align h1, h2, h6
+   Pair with _typography-base.css */
+
+h1 { text-align: center !important; }
+h2 { text-align: center !important; }
+h6 { text-align: center !important; }

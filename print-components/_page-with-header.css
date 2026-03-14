@@ -1,0 +1,76 @@
+/* _page-with-header.css — Page margins with repeating text header on pages 2+
+   Page 1 uses an inline image header (![[image.png]]) so margin-box header
+   is suppressed on :first via content: none. */
+
+/* ===== PAGE LAYOUT ===== */
+
+@page {
+	margin: var(--page-margin-top) var(--page-margin-default) var(--page-margin-bottom) var(--page-margin-default) !important;
+
+	/* Repeating header: left = brand, right = document title (captured from H1 via string-set) */
+	@top-left {
+		content: "Gordian Risk Advisors";
+		font-family: Montserrat, sans-serif;
+		font-size: 8pt;
+		color: #444;
+		border-bottom: 0.5pt solid darkgrey;
+		padding-bottom: 4pt;
+		vertical-align: top;
+	}
+
+	/* Empty centre box — its border-bottom completes the rule across the full page width */
+	@top-center {
+		content: "";
+		border-bottom: 0.5pt solid darkgrey;
+		padding: 0;
+		vertical-align: top;
+	}
+
+	/* Document title from H1 via string-set — blank (graceful) if unsupported by Electron */
+	@top-right {
+		content: string(doc-title);
+		font-family: Montserrat, sans-serif;
+		font-size: 8pt;
+		color: #666;
+		font-style: italic;
+		border-bottom: 0.5pt solid darkgrey;
+		padding-bottom: 4pt;
+		vertical-align: top;
+		text-align: right;
+	}
+}
+
+/* Page 1: in-document image header is used — suppress margin-box header */
+@page :first {
+	margin: var(--page-margin-first-top) var(--page-margin-default) var(--page-margin-bottom) var(--page-margin-default) !important;
+
+	@top-left   { content: none; border-bottom: none; }
+	@top-center { content: none; border-bottom: none; }
+	@top-right  { content: none; border-bottom: none; }
+}
+
+/* Capture H1 text for use as the running right-side header on pages 2+ */
+h1 {
+	string-set: doc-title content();
+}
+
+/* ===== PAGE BREAK CONTROLS ===== */
+
+p, li, blockquote, table, figure {
+	page-break-inside: avoid !important;
+	break-inside: avoid !important;
+}
+
+p:first-child {
+	margin-top: var(--padding-normal) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	page-break-after: avoid !important;
+}
+
+ul, ol, dl {
+	page-break-inside: avoid !important;
+	/* break-inside: avoid !important; */
+	page-break-before: avoid !important;
+}

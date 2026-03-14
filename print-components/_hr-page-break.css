@@ -1,0 +1,22 @@
+/* _hr-page-break.css — hr visible in Obsidian screen view; forces a new page in PDF (invisible)
+   Use in report/document layouts where --- means "start a new page" */
+
+@media print {
+	hr {
+		display: block !important;
+		border: none !important;
+		height: 0 !important;
+		break-after: page !important;
+		page-break-after: always !important;
+		margin: 0 !important;
+	}
+
+	/* Obsidian renders footnotes as <section class="footnotes"><hr><ol>...
+	   Suppress the page-break on that injected hr. */
+	.footnotes hr,
+	section[data-footnotes] hr {
+		display: none !important;
+		break-after: auto !important;
+		page-break-after: auto !important;
+	}
+}

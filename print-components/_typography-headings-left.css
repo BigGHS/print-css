@@ -1,0 +1,6 @@
+/* _typography-headings-left.css — Left-align h1, h2, h6
+   Pair with _typography-base.css */
+
+h1 { text-align: left !important; }
+h2 { text-align: left !important; }
+h6 { text-align: left !important; }

@@ -1,0 +1,133 @@
+/* _typography-base.css — Body text, headings (alignment-neutral), and inline elements
+   Pair with _typography-headings-centered.css or _typography-headings-left.css */
+
+/* ===== TYPOGRAPHY ===== */
+
+body {
+	tab-size: 4 !important;
+	--code-background: var(--code-background-color) !important;
+	--code-normal: var(--code-text-color) !important;
+	--color-accent: var(--text-color) !important;
+	position: relative !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+p {
+	font-family: var(--body-font-family) !important;
+	font-size: var(--default-font-size) !important;
+	color: var(--text-color) !important;
+	text-align: justify !important;
+	line-height: var(--line-spacing) !important;
+	text-indent: 0;
+	margin: 0 0 var(--padding-normal) 0 !important;
+	orphans: var(--orphans-count) !important;
+	widows: var(--widows-count) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--header-font-family) !important;
+	color: var(--text-color) !important;
+	page-break-inside: avoid;
+	font-size: var(--h3-font-size) !important;
+	font-weight: medium !important;
+	text-align: left !important;
+	line-height: 1.1 !important;
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+	/* margin-top: 20pt !important; */
+}
+
+/* Reduce spacing between consecutive headings */
+h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+h2 + h3, h2 + h4, h2 + h5, h2 + h6,
+h3 + h4, h3 + h5, h3 + h6,
+h4 + h5, h4 + h6,
+h5 + h6 {
+	margin-top: var(--padding-normal) !important;
+}
+
+body p + h3 {
+	margin-top: 50pt !important; /* 15pt instead of 10pt */
+}
+
+h1 {
+	font-size: var(--h1-font-size) !important;
+	font-weight: 500 !important;
+	line-height: 1 !important;
+	margin-top: 0 !important;
+	margin-bottom: var(--padding-normal) !important;
+}
+
+h6 {
+	font-size: var(--h3-font-size) !important;
+	font-weight: normal !important;
+	margin-bottom: var(--padding-normal) !important;
+}
+
+h2 {
+	font-size: var(--h2-font-size) !important;
+	/* padding-bottom: var(--padding-small) !important; */
+	margin-bottom: var(--padding-normal) !important;
+}
+
+h3 {
+	font-size: var(--h3-font-size) !important;
+	/* padding-bottom: var(--padding-normal) !important; */
+	margin-top: var(--padding-vlarge) !important;
+	padding-top: 0pt !important;
+	margin-bottom: var(--padding-normal) !important;
+}
+
+* + h3 {
+	margin-top: var(--padding-vlarge) !important;
+}
+
+p + h3 {
+	margin-top: var(--padding-vlarge) !important;
+	padding-top: 0pt !important;
+}
+
+h4 {
+	font-size: var(--h4-h5-font-size) !important;
+	/* padding-bottom: var(--padding-small) !important; */
+	margin-bottom: var(--padding-normal) !important;
+}
+
+h5 {
+	font-size: var(--h4-h5-font-size) !important;
+	/* padding-bottom: var(--padding-small) !important; */
+	margin-top: var(--padding-small) !important;
+	margin-bottom: var(--padding-normal) !important;
+}
+
+strong {
+	font-weight: medium !important;
+}
+
+em {
+	font-style: italic !important;
+}
+
+del {
+	text-decoration: none;
+}
+
+mark {
+	background-color: var(--background-color-light) !important;
+	color: var(--text-color) !important;
+	padding: 2pt 2pt !important;
+	border-radius: 0 !important;
+}
+
+a:link, a:visited, a {
+	color: var(--text-color) !important;
+	text-decoration: none !important;
+}
+
+code {
+	font-family: var(--code-font-family) !important;
+	font-size: var(--code-font-size) !important;
+	color: var(--code-text-color) !important;
+	border-radius: 0 !important;
+}

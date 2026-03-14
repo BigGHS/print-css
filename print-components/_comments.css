@@ -1,0 +1,32 @@
+/* _comments.css — Styles %%Obsidian comments%% when included in PDF export
+   via the "Include comments" toggle in better-export-pdf-custom */
+
+.obsidian-comment {
+	background-color: #fffbeb !important;
+	border-left: 3px solid #f59e0b !important;
+	border-radius: 0 !important;
+	padding: var(--padding-normal) !important;
+	margin: var(--list-margin) 0 !important;
+	page-break-inside: avoid !important;
+	break-inside: avoid !important;
+}
+
+.obsidian-comment::before {
+	content: "COMMENT";
+	display: block !important;
+	font-family: var(--header-font-family) !important;
+	font-size: 0.7em !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.08em !important;
+	color: #b45309 !important;
+	margin-bottom: 0.4em !important;
+}
+
+.obsidian-comment p,
+.obsidian-comment li {
+	font-family: var(--body-font-family) !important;
+	font-size: var(--default-font-size) !important;
+	color: #78350f !important;
+	line-height: var(--line-spacing) !important;
+	margin: 0 !important;
+}

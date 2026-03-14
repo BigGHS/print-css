@@ -1,0 +1,168 @@
+/* _lists.css — Unordered, ordered, and definition lists */
+
+/* ===== LISTS ===== */
+
+ul, ol, dl {
+	font-family: var(--body-font-family) !important;
+	font-size: var(--default-font-size) !important;
+	line-height: var(--line-spacing) !important;
+	list-style-position: outside !important;
+	padding-left: 17pt !important;
+	padding-right: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: var(--padding-small) !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	margin-top: var(--list-margin) !important;
+	margin-bottom: var(--list-margin) !important;
+}
+
+ul li, ol li {
+	position: relative !important;
+	padding: 0 0 0 5pt !important;
+	margin: 0 0 var(--list-item-margin) 0 !important;
+	line-height: var(--line-spacing) !important;
+}
+
+ul li:last-child, ol li:last-child {
+	margin-bottom: 0 !important;
+}
+
+/* Force consistent spacing for all list items regardless of context */
+ul li, ol li,
+.callout ul li, .callout ol li,
+blockquote ul li, blockquote ol li,
+div ul li, div ol li,
+p + ul li, p + ol li {
+	margin-bottom: var(--list-item-margin) !important;
+	padding-bottom: 0 !important;
+}
+
+/* Handle paragraphs inside list items (caused by empty lines in markdown) */
+li p {
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: var(--line-spacing) !important;
+	text-align: justify !important;
+}
+
+/* Ensure first and last paragraphs in list items have no extra margin */
+li p:first-child,
+li p:last-child {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Handle multiple paragraphs in a single list item */
+li p + p {
+	margin-top: var(--padding-tiny) !important;
+}
+
+ul li {
+	list-style-type: none !important;
+}
+
+ul li::before {
+	content: '•' !important;
+	position: absolute !important;
+	left: var(--bullet-position-level1) !important;
+	top: -0.15em !important;
+	font-size: var(--bullet-size-level1) !important;
+}
+
+ul ul {
+	margin-top: var(--list-item-margin) !important;
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+ul ul li {
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+ul ul li::before {
+	content: '▸' !important;
+	position: absolute !important;
+	left: var(--bullet-position-level2) !important;
+	top: -0.15em !important;
+	font-size: var(--bullet-size-level2) !important;
+}
+
+ul ul ul {
+	margin-top: var(--list-item-margin) !important;
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+ul ul ul li {
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+ul ul ul li::before {
+	content: '▪' !important;
+	position: absolute !important;
+	left: var(--bullet-position-level2) !important;
+	top: -0.15em !important;
+	font-size: var(--bullet-size-level3) !important;
+}
+
+ol li::marker {
+	font-family: var(--body-font-family) !important;
+	font-size: var(--default-font-size) !important;
+	color: var(--text-color) !important;
+}
+
+ol ol {
+	margin-top: var(--list-item-margin) !important;
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+ol ol li::marker {
+	color: var(--text-color) !important;
+}
+
+/* Mixed list spacing fixes */
+li ul, li ol {
+	margin-top: var(--list-item-margin) !important;
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+li ul li, li ol li {
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+ul ol li {
+	list-style-type: decimal !important;
+	position: static !important;
+	margin-left: 0 !important;
+	padding: 0 0 0 5pt !important;
+	margin-bottom: var(--list-item-margin) !important;
+}
+
+ul ol li::before {
+	content: none !important;
+}
+
+ul ol li::marker {
+	font-family: var(--body-font-family) !important;
+	font-size: var(--default-font-size) !important;
+	color: var(--text-color) !important;
+}
+
+/* List Spacing - consistent spacing for all contexts */
+h1 + ul, h1 + ol, h2 + ul, h2 + ol, h3 + ul, h3 + ol,
+h4 + ul, h4 + ol, h5 + ul, h5 + ol, h6 + ul, h6 + ol,
+p + ul, p + ol {
+	margin-top: var(--padding-tiny) !important;
+}
+
+ul + ul, ol + ol, ul + ol, ol + ul,
+ul + p, ol + p {
+	margin-top: var(--padding-tiny) !important;
+}
+
+h1 + h6 {
+	margin-top: var(--padding-tiny) !important;
+}
+
+h6 + p {
+	margin-top: var(--padding-large) !important;
+}

@@ -1,0 +1,51 @@
+/* _tables.css — Table styling */
+
+/* ===== TABLES ===== */
+
+table {
+	font-family: var(--body-font-family) !important;
+	font-size: var(--table-font-size) !important;
+	text-align: left !important;
+	/* margin: 1.5em auto 1em auto !important; */
+	border-top: var(--table-border-width) solid var(--border-color-dark) !important;
+	border-bottom: var(--table-border-width) solid var(--border-color-dark) !important;
+	max-width: 100% !important;
+	table-layout: auto !important;
+	word-wrap: break-word !important;
+	/* margin-bottom: var(--padding-normal) !important; */
+	page-break-inside: avoid !important;
+}
+
+/* Table header row */
+th {
+	color: var(--text-color) !important;
+	background-color: lightgrey !important;
+	font-weight: medium !important;
+	font-size: var(--table-font-size) !important;
+	border: none !important;
+	border-bottom: var(--table-border-width) solid var(--border-color-medium) !important;
+	padding: 2pt 5pt !important;
+	word-wrap: break-word !important;
+	overflow-wrap: break-word !important;
+}
+
+/* Table data rows */
+td {
+	font-size: var(--table-font-size) !important;
+	border: none !important;
+	padding: 2pt 5pt !important;
+	word-wrap: break-word !important;
+	overflow-wrap: break-word !important;
+	color: var(--text-color) !important;
+	vertical-align: top !important;
+}
+
+/* Spacing following a table */
+/* table + h1, table + h2, table + h3, table + h4, table + h5, table + h6 {
+	margin-top: calc(var(--padding-normal) + 10pt) !important;
+	}
+	*/
+
+table + p, table + ul, table + ol {
+	margin-top: var(--padding-normal) !important;
+}

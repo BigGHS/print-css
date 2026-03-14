@@ -1,0 +1,6 @@
+/* _hr-screen-only.css — hr visible in Obsidian screen view only; hidden in PDF
+   Use when --- is purely decorative in the .md file and should not appear in print */
+
+hr {
+	display: none !important;
+}

@@ -1,0 +1,75 @@
+/* _variables.css — CSS custom properties shared across all print variants */
+
+:root {
+	/* Typography Variables */
+	--body-font-family: Roboto;
+	--header-font-family: Montserrat, sans-serif;
+	--code-font-family: MonoLisa, Menlo, SFMono-Regular, Consolas, "Roboto Mono", monospace;
+
+	/* Font Sizes */
+	--default-font-size: 11pt;
+	--h1-font-size: 15pt;
+	--h2-font-size: 13pt;
+	--h3-font-size: 12pt;
+	--h4-h5-font-size: var(--default-font-size);
+	--table-font-size: 10pt;
+	--code-font-size: 10pt;
+	--caption-font-size: 8pt;
+	--footnote-font-size: 10pt;
+
+	/* [Margin] | Border | [Padding] Content [Padding] | Border | [Margin] */
+
+	/* Spacing Variables */
+	--padding-tiny: 3pt;
+	--padding-small: 5pt;
+	--padding-normal: 10pt;
+	--padding-large: 15pt;
+	--padding-vlarge: 20pt;
+
+	/* Layout Variables */
+	--line-spacing: 1.4;
+	--footnote-line-spacing: 1.1;
+	--list-margin: 0pt;
+	--list-item-margin: 3pt;
+
+	/* Color Variables */
+	--text-color: black;
+	--background-color-light: rgb(240, 240, 240);
+	--border-color-light: lightgrey;
+	--border-color-medium: grey;
+	--border-color-dark: darkgrey;
+	--code-background-color: rgb(240, 240, 240);
+	--code-text-color: #292929;
+
+	/* Page Layout Variables */
+	--page-margin-default: 1.5cm;
+	--page-margin-top: 2.5cm;
+	--page-margin-first-top: 0.5cm;
+	--page-margin-bottom: 2cm;
+
+	/* List Bullet Positioning */
+	--bullet-position-level1: -15pt;
+	--bullet-position-level2: -15pt;
+	--bullet-size-level1: 1.4em;
+	--bullet-size-level2: 1.1em;
+	--bullet-size-level3: 1.0em;
+
+	/* Border Styles */
+	--table-border-width: 1px;
+	--code-border-width: 1px;
+	--highlight-border-width: 0px;
+
+	/* Table Column Width Variables */
+	--table-col-width-narrow: 15%;
+	--table-col-width-small: 20%;
+	--table-col-width-medium: 25%;
+	--table-col-width-large: 35%;
+	--table-col-width-wide: 45%;
+	--table-col-width-auto: auto;
+	--table-col-width-min: min-content;
+	--table-col-width-max: max-content;
+
+	/* Print-specific Variables */
+	--orphans-count: 2;
+	--widows-count: 2;
+}

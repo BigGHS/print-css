@@ -1,0 +1,11 @@
+/* _hr-rule.css — hr renders as a visible divider, no page break
+   Use in flowing/narrative layouts where --- means a section break */
+
+hr {
+	display: block !important;
+	border: none !important;
+	border-top: 1px solid var(--border-color-light) !important;
+	break-after: auto !important;
+	page-break-after: auto !important;
+	margin: var(--padding-normal) 0 !important;
+}
