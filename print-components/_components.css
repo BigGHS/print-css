@@ -13,6 +13,8 @@ pre {
 	border-radius: 0 !important;
 	border-width: var(--code-border-width) 0 !important;
 	border-color: var(--border-color-medium) !important;
+	font-family: var(--code-font-family) !important;
+	font-size: var(--code-font-size) !important;
 	line-height: 1 !important;
 	margin: var(--list-margin) 0 !important;
 	margin-bottom: var(--padding-large) !important;
@@ -20,6 +22,11 @@ pre {
 	page-break-inside: avoid !important;
 	overflow: hidden !important;
 	word-wrap: break-word !important;
+}
+
+pre code {
+	font-family: var(--code-font-family) !important;
+	font-size: var(--code-font-size) !important;
 }
 
 pre + h1, pre + h2, pre + h3, pre + h4, pre + h5, pre + h6 {
